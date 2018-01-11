@@ -9,13 +9,11 @@ import com.paljjak.thirtydoc.BaseView
 interface SplashContract {
     interface View: BaseView<Presenter> {
         fun printText(text: String)
-        fun getMobileIdFromPref(): String
-        fun putIdIntoPref(id: String)
     }
 
     interface Presenter: BasePresenter<View> {
         fun printInitialText()
-        fun logIn(id: String): Boolean
+        fun logIn()
         fun requestRegisteringWithGeneratedId()
     }
 }

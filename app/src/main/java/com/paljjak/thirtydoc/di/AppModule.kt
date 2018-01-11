@@ -3,6 +3,7 @@ package com.paljjak.thirtydoc.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.paljjak.thirtydoc.data.source.remote.NetworkService
 import com.paljjak.thirtydoc.util.Constants
 import dagger.Binds
 import dagger.Module
@@ -18,6 +19,11 @@ abstract class AppModule {
 
     @Module
     companion object {
+
+        @JvmStatic
+        @Provides
+        fun bindNetworkModule() = NetworkService()
+
         @JvmStatic
         @Provides
         fun provideSharePreference(context: Context): SharedPreferences = context.getSharedPreferences(Constants.SHARD_PREF_COMMON_KEY, Context.MODE_PRIVATE)
