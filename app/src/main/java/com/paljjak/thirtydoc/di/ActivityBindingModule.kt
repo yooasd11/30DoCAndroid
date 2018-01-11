@@ -1,7 +1,9 @@
 package com.paljjak.thirtydoc.di
 
-import com.paljjak.thirtydoc.main.MainActivity
-import com.paljjak.thirtydoc.main.MainModule
+import com.paljjak.thirtydoc.quiz.QuizActivity
+import com.paljjak.thirtydoc.quiz.QuizModule
+import com.paljjak.thirtydoc.splash.SplashActivity
+import com.paljjak.thirtydoc.splash.SplashModule
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
@@ -12,6 +14,10 @@ import dagger.android.ContributesAndroidInjector
 @Module(includes = [AndroidInjectionModule::class])
 abstract class ActivityBindingModule {
     @PerActivity
-    @ContributesAndroidInjector(modules = [MainModule::class])
-    abstract fun mainActivity(): MainActivity
+    @ContributesAndroidInjector(modules = [QuizModule::class])
+    abstract fun quizActivity(): QuizActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [SplashModule::class])
+    abstract fun splashActivity(): SplashActivity
 }

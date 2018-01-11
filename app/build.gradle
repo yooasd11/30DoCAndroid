@@ -40,4 +40,7 @@ dependencies {
     compile "com.google.dagger:dagger-android:$dagger2_version"
     compile "com.google.dagger:dagger-android-support:$dagger2_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
+
+    // String generator for mobile ID
+    compile 'com.github.mifmif:generex:1.0.2'
 }

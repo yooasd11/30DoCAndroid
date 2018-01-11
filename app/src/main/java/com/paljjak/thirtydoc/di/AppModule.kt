@@ -2,8 +2,11 @@ package com.paljjak.thirtydoc.di
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
+import com.paljjak.thirtydoc.util.Constants
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 /**
  * Created by yooas on 2018-01-07.
@@ -11,5 +14,12 @@ import dagger.Module
 @Module
 abstract class AppModule {
     @Binds
-    internal abstract fun bindContext(application: Application): Context
+    abstract fun bindContext(application: Application): Context
+
+    @Module
+    companion object {
+        @JvmStatic
+        @Provides
+        fun provideSharePreference(context: Context): SharedPreferences = context.getSharedPreferences(Constants.SHARD_PREF_COMMON_KEY, Context.MODE_PRIVATE)
+    }
 }

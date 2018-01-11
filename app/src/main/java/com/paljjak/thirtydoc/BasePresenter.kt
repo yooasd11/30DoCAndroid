@@ -5,5 +5,4 @@ package com.paljjak.thirtydoc
  */
 interface BasePresenter<T> {
     fun takeView(view: T)
-    fun dropView()
 }
