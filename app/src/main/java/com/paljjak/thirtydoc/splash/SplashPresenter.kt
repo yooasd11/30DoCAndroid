@@ -50,8 +50,4 @@ class SplashPresenter @Inject constructor(): SplashContract.Presenter {
             }
         }
     }
-
-    override fun takeView(view: SplashContract.View) {
-        mSplashView = view
-    }
 }

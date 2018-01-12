@@ -8,12 +8,10 @@ import javax.inject.Inject
  */
 @PerActivity
 class QuizPresenter @Inject constructor(): QuizContract.Presenter {
-    private var mQuizView: QuizContract.View? = null
+    @Inject
+    lateinit var mQuizView: QuizContract.View
 
-    override fun takeView(view: QuizContract.View) {
-        this.mQuizView = view
-    }
     override fun printInitialText() {
-        mQuizView!!.printText("Hello world from presenter")
+        mQuizView.printText("QUIZ")
     }
 }
