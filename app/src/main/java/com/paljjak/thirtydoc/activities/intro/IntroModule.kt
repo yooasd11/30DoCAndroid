@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.intro
+package com.paljjak.thirtydoc.activities.intro
 
 import com.paljjak.thirtydoc.di.PerActivity
 import dagger.Binds

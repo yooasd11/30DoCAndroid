@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.splash
+package com.paljjak.thirtydoc.activities.splash
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import javax.inject.Inject
 import android.content.Intent
 import android.view.animation.AnimationUtils
-import com.paljjak.thirtydoc.intro.IntroActivity
+import com.paljjak.thirtydoc.activities.intro.IntroActivity
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 

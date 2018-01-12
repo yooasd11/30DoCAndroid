@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.splash
+package com.paljjak.thirtydoc.activities.splash
 
 import com.paljjak.thirtydoc.di.PerActivity
 import dagger.Binds

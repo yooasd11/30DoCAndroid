@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.quiz
+package com.paljjak.thirtydoc.activities.quiz
 
 import android.os.Bundle
 import com.paljjak.thirtydoc.R
@@ -10,9 +10,10 @@ class QuizActivity : DaggerAppCompatActivity(), QuizContract.View {
     @Inject
     lateinit var mQuizPresenter: QuizPresenter
 
-    override fun printText(text: String) {
-        id_textview.text = text
+    override fun printDescriptionWithNumber(numberOfQuestions: Int) {
+        id_textview.text = String.format(getString(R.string.quiz_description), numberOfQuestions)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

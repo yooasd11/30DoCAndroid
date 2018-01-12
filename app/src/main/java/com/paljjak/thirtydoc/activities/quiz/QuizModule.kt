@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.quiz
+package com.paljjak.thirtydoc.activities.quiz
 
 import com.paljjak.thirtydoc.di.PerActivity
 import dagger.Binds

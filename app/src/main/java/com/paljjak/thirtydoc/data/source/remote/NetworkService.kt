@@ -6,4 +6,5 @@ package com.paljjak.thirtydoc.data.source.remote
 
 class NetworkService {
     fun logIn(id: String): Boolean = true
+    fun getNumberOfQuestions(): Int = 10
 }

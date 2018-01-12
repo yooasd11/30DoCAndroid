@@ -1,4 +1,4 @@
-package com.paljjak.thirtydoc.quiz
+package com.paljjak.thirtydoc.activities.quiz
 
 import com.paljjak.thirtydoc.BasePresenter
 import com.paljjak.thirtydoc.BaseView
@@ -8,7 +8,7 @@ import com.paljjak.thirtydoc.BaseView
  */
 interface QuizContract {
     interface View: BaseView<Presenter> {
-        fun printText(text: String)
+        fun printDescriptionWithNumber(numberOfQuestions: Int)
     }
 
     interface Presenter: BasePresenter<View> {

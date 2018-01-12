@@ -1,10 +1,10 @@
-package com.paljjak.thirtydoc.intro
+package com.paljjak.thirtydoc.activities.intro
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.paljjak.thirtydoc.R
-import com.paljjak.thirtydoc.quiz.QuizActivity
+import com.paljjak.thirtydoc.activities.quiz.QuizActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_intro.*
 import javax.inject.Inject
