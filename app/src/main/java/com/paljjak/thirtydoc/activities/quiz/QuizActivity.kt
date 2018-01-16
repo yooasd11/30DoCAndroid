@@ -14,7 +14,6 @@ class QuizActivity : DaggerAppCompatActivity(), QuizContract.View {
         id_textview.text = String.format(getString(R.string.quiz_description), numberOfQuestions)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)

@@ -3,7 +3,7 @@ package com.paljjak.thirtydoc.activities.quiz
 import com.paljjak.thirtydoc.di.PerActivity
 import dagger.Binds
 import dagger.Module
-
+import dagger.Provides
 /**
  * Created by yooas on 2018-01-07.
  */
@@ -15,4 +15,13 @@ abstract class QuizModule {
     @PerActivity
     @Binds
     abstract fun presenter(quizPresenter: QuizPresenter): QuizContract.Presenter
+
+    @Module
+    companion object {
+        @JvmStatic
+        @PerActivity
+        @Provides
+        fun provideQuizFragment(): QuizFragment = QuizFragment()
+    }
 }
+

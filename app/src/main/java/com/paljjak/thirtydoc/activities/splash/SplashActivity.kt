@@ -1,18 +1,14 @@
 package com.paljjak.thirtydoc.activities.splash
 
 import android.os.Bundle
-import android.os.Handler
 import com.paljjak.thirtydoc.R
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import javax.inject.Inject
 import android.content.Intent
-import android.view.animation.AnimationUtils
+import android.content.SharedPreferences
 import com.paljjak.thirtydoc.activities.intro.IntroActivity
-import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
-
-
+import com.paljjak.thirtydoc.util.Constants
 
 
 /**
@@ -22,33 +18,32 @@ class SplashActivity: DaggerAppCompatActivity(), SplashContract.View {
     @Inject
     lateinit var mSplashPresenter: SplashPresenter
 
+    @Inject
+    lateinit var mSharePref: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         mSplashPresenter.printInitialText()
-        mSplashPresenter.logIn()
-
-        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        fadeInAnim.setAnimationListener(object : AnimationListener {
-
-            override fun onAnimationStart(animation: Animation) {}
-
-
-            override fun onAnimationRepeat(animation: Animation) {}
-
-
-            override fun onAnimationEnd(animation: Animation) {
-                val intent = Intent(this@SplashActivity, IntroActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        })
-
-        id_textview.startAnimation(fadeInAnim)
+        mSplashPresenter.logIn(mSharePref.getString(Constants.PREF_MOBILE_ID_KEY, ""))
     }
 
     override fun printText(text: String) {
         id_textview.text = text
+    }
+
+    override fun goToQuizActivity() {
+        val intent = Intent(this@SplashActivity, IntroActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun goToChatActivity() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun somethingIsWrong() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

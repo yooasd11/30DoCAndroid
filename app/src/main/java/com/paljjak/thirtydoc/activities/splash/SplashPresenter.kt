@@ -1,10 +1,9 @@
 package com.paljjak.thirtydoc.activities.splash
 
-import android.content.SharedPreferences
 import com.paljjak.thirtydoc.data.source.remote.NetworkService
 import com.paljjak.thirtydoc.di.PerActivity
-import com.paljjak.thirtydoc.util.Constants
 import com.paljjak.thirtydoc.util.IdGenerator
+import com.paljjak.thirtydoc.util.ServiceStatus
 import javax.inject.Inject
 
 /**
@@ -19,35 +18,36 @@ class SplashPresenter @Inject constructor(): SplashContract.Presenter {
     @Inject
     lateinit var mNetworkService: NetworkService
 
-    @Inject
-    lateinit var mSharePref: SharedPreferences
-
     override fun printInitialText() {
         mSplashView.printText("SPLASH")
     }
 
-    override fun logIn() {
+    override fun logIn(id: String) {
         // Request log in to network module
-        var id = mSharePref.getString(Constants.PREF_MOBILE_ID_KEY, "")
+        var status: ServiceStatus
         if (id.isEmpty()) {
-            requestRegisteringWithGeneratedId()
+            status = requestRegisteringWithGeneratedId()
+        } else {
+            status = mNetworkService.logIn(id)
         }
-        else {
-            if (mNetworkService.logIn(id)) {
-                mSplashView.printText("Logged in by ID : $id")
-            } else {
-                mSplashView.printText("Login failed for some reason")
-            }
+
+        when (status) {
+            ServiceStatus.ID_INVALID -> mSplashView.somethingIsWrong()
+            ServiceStatus.WAITING -> mSplashView.goToQuizActivity()
+            ServiceStatus.CHATTING -> mSplashView.goToChatActivity()
         }
     }
 
-    override fun requestRegisteringWithGeneratedId() {
+    override fun requestRegisteringWithGeneratedId(): ServiceStatus {
+        var response: ServiceStatus
         while (true) {
             var id = IdGenerator.createRandomId()
-            if (mNetworkService.logIn(id)) {
+            response = mNetworkService.logIn(id)
+            if (response != ServiceStatus.ID_INVALID) {
                 mSplashView.printText("Logged in by ID : $id")
                 break
             }
         }
+        return response
     }
 }

@@ -2,6 +2,7 @@ package com.paljjak.thirtydoc.activities.splash
 
 import com.paljjak.thirtydoc.BasePresenter
 import com.paljjak.thirtydoc.BaseView
+import com.paljjak.thirtydoc.util.ServiceStatus
 
 /**
  * Created by yooas on 2018-01-11.
@@ -9,11 +10,14 @@ import com.paljjak.thirtydoc.BaseView
 interface SplashContract {
     interface View: BaseView<Presenter> {
         fun printText(text: String)
+        fun goToQuizActivity()
+        fun goToChatActivity()
+        fun somethingIsWrong()
     }
 
     interface Presenter: BasePresenter<View> {
         fun printInitialText()
-        fun logIn()
-        fun requestRegisteringWithGeneratedId()
+        fun logIn(id: String)
+        fun requestRegisteringWithGeneratedId(): ServiceStatus
     }
 }
