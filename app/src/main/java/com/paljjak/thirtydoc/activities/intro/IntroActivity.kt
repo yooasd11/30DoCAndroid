@@ -23,6 +23,7 @@ class IntroActivity: DaggerAppCompatActivity(), IntroContract.View, View.OnClick
 
         id_start_button.setOnClickListener(this)
         id_create_mine_text.setOnClickListener(this)
+        mIntroPresenter.mIntroView
     }
 
     override fun onClick(p0: View) {
